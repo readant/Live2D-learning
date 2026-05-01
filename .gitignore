@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Live2D build outputs (if any)
+*.so
+*.pyd
+*.dll
+*.dylib
+
+# Model cache (optional, models are large)
+# resources/models/*.moc3
+# resources/models/*.motion3.json
