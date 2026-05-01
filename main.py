@@ -13,15 +13,26 @@ from src.ui.desktop_pet_widget import DesktopPetWidget
 
 
 def main():
+    """
+    主程序入口函数
+    初始化 Qt 应用程序，创建并显示桌面宠物窗口
+    """
+    # ========== Qt 应用程序配置 ==========
+    # 启用 OpenGL 上下文共享（Live2D 需要）
     QApplication.setAttribute(Qt.AA_ShareOpenGLContexts, True)
     
+    # 创建 Qt 应用程序实例
     app = QApplication(sys.argv)
+    # 关闭最后一个窗口时不退出应用程序（桌宠需要保持运行）
     app.setQuitOnLastWindowClosed(False)
+    # 设置应用程序名称
     app.setApplicationName("Live2D桌宠")
 
+    # ========== 创建并显示桌面宠物窗口 ==========
     pet = DesktopPetWidget()
     pet.show()
 
+    # ========== 打印启动信息 ==========
     print("=" * 50)
     print("Live2D桌面宠物已启动")
     print("功能说明：")
@@ -30,6 +41,7 @@ def main():
     print("  - 右键菜单：手动选择表情/退出")
     print("=" * 50)
 
+    # ========== 进入 Qt 事件循环 ==========
     sys.exit(app.exec_())
 
 
