@@ -1,85 +1,41 @@
-# 更新日志
+# Changelog
 
-## v2.0 - 交互系统大改版 (2024-当前版本)
+All notable changes to this project will be documented in this file.
 
-### 🎯 主要更新
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-#### 1. 新增交互控制器 (`InteractionController`)
+## [1.0.0] - 2024-05-01
 
-**文件**：`src/core/interaction_controller.py`
+### Added
 
-**功能**：
-- 统一的交互管理系统
-- 支持单击、双击、三击检测
-- 动作优先级管理
-- 动作冷却系统
-- 动作回调机制
-- 命中区域检测（头部/身体）
+- **项目基础结构**
+  - 模块化项目架构 (config/src/ui)
+  - 基于 PyQt5 的无标题栏窗口实现
+  - OpenGL 渲染支持
 
-**核心类**：
-```python
-class InteractionController:
-    def process_click(x, y, click_count)  # 处理点击
-    def trigger_motion(motion_name)        # 触发动作
-    def set_motion_callback(name, func)    # 设置回调
-    def set_cooldown(motion, seconds)      # 设置冷却
-```
+- **核心功能**
+  - 鼠标追踪实现头部/眼球跟随
+  - 呼吸动画控制器
+  - 交互控制器 (单击/双击/三击检测)
+  - 动作优先级与冷却系统
+  - 表情切换 (开心/认真/犯困)
+  - 右键菜单系统
 
-#### 2. 增强的点击交互
+- **文档**
+  - 项目概述
+  - 技术架构详解
+  - Live2D_Py 库集成详解
+  - 常见问题与解决方案
+  - 代码结构与规范
+  - 交互系统详解
 
-**改进前**：
-- 单击触发：`Tap` 动作 + 表情切换
+### Dependencies
 
-**改进后**：
-- 单击头部 → `Tap` + 表情切换
-- 单击身体 → `Tap@Body`
-- 双击头部 → `Flick`
-- 双击身体 → `Flick@Body`
-- 三击任意位置 → `FlickDown`
+- PyQt5 >= 5.15.0
+- numpy >= 1.20.0
+- live2d-py >= 0.6.1
+- PyOpenGL >= 3.1.0
 
-#### 3. 动作优先级系统
+### Model
 
-```python
-_motion_priorities = {
-    "Idle": 0,        # 待机（最低）
-    "Tap": 2,         # 点击
-    "Tap@Body": 2,    # 点击身体
-    "Flick": 2,       # 滑动
-    "Flick@Body": 2,  # 滑动身体
-    "FlickDown": 2,   # 下滑
-}
-```
-
-#### 4. 动作冷却系统
-
-防止动作被频繁触发，提升用户体验：
-
-```python
-_cooldowns = {
-    "Tap": 1.0,      # 1秒冷却
-    "Tap@Body": 1.0, # 1秒冷却
-    "Flick": 0.5,    # 0.5秒冷却
-    "Flick@Body": 0.5,
-    "FlickDown": 0.5,
-}
-```
-
-#### 5. 增强的右键菜单
-
-**新增功能**：
-- 🎭 表情切换子菜单
-- 🎬 动作测试子菜单
-- ℹ️ 信息查看（帧率、可用动作）
-- ❌ 退出选项
-
-**菜单样式**：
-- 圆角边框
-- 悬停高亮
-- Emoji 图标
-
-#### 6. 命
-
-...
-
-动文件重命名
-... [内容已截断，原长度 6149 字符]
+- Live2D Cubism 4.0 Model "Hiyori" (non-commercial license)

@@ -4,31 +4,54 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+*.pyc
 
 # Virtual Environment
 .venv/
 venv/
 ENV/
+env/
 
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+*.sublime-*
 
 # OS
 .DS_Store
 Thumbs.db
+Desktop.ini
 
 # Logs
 *.log
+logs/
 
-# Live2D build outputs (if any)
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Git
+.git/
+.gitignore
+!.gitignore
+
+# Build artifacts
 *.so
 *.pyd
 *.dll
 *.dylib
+*.lib
 
-# Model cache (optional, models are large)
+# Optional: Ignore large model files (uncomment if needed)
 # resources/models/*.moc3
 # resources/models/*.motion3.json
+# resources/models/*.physics3.json
+# resources/models/*.cdi3.json
+# resources/models/*.2048/
+
+# Runtime
+*.cache
+.pytype/
