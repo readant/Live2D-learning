@@ -1,7 +1,7 @@
 """
 版本 1: 基础渲染
 
-这个版本展示了创建 Live2D 桌宠的最小代码。
+这个版本展示了创建 Live2D的最小代码。
 只包含最基础的窗口和模型渲染，没有任何交互功能。
 
 学习这个版本的收获：
@@ -13,7 +13,7 @@
 
 import sys
 from PyQt5.QtWidgets import QApplication, QOpenGLWidget
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 import live2d.v3 as live2d
 
 MODEL_PATH = "./resources/models/Hiyori.model3.json"
@@ -40,6 +40,11 @@ class BasicWidget(QOpenGLWidget):
         live2d.glInit()
         self.live2d_model = live2d.LAppModel()
         self.live2d_model.LoadModelJson(MODEL_PATH)
+        
+        # 添加定时器触发持续渲染（60FPS）
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.update)
+        self.timer.start(1000 // 60)
 
     def paintGL(self):
         live2d.clearBuffer()
